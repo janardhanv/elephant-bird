@@ -57,6 +57,13 @@
       <groupId>com.hadoop.gplcompression</groupId>
       <artifactId>hadoop-lzo</artifactId>
     </dependency>
+    <!-- test -->
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant</artifactId>
+      <version>1.7.0</version>
+    </dependency>
+
   </dependencies>
 
   <build>
