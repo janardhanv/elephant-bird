@@ -127,9 +127,10 @@ public class MapReduceInputFormatWrapper<K, V> extends org.apache.hadoop.mapredu
 
     private K keyObj = null;
     private V valueObj = null;
+    boolean done = false;
 
-    public RecordReaderWrapper(InputFormat<K, V> realInptuFormat) throws IOException {
-      this.realInputFormat = realInptuFormat;
+    public RecordReaderWrapper(InputFormat<K, V> realInputFormat) throws IOException {
+      this.realInputFormat = realInputFormat;
     }
 
     @Override
@@ -167,6 +168,11 @@ public class MapReduceInputFormatWrapper<K, V> extends org.apache.hadoop.mapredu
                        (TaskInputOutputContext) context : null;
 
         public void progress() { context.progress(); }
+
+	@Override
+        public float getProgress() {
+          return done? 1f: 0f;
+        }
 
         public void setStatus(String status) {
           if (ioCtx != null)
