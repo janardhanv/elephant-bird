@@ -157,14 +157,14 @@ public class TestThriftToPig {
     HolyMoley hm = hmConverter.fromBytes(hmConverter.toBytes(Fixtures.holyMoley));
 
     assertEquals(
-        "1-0-35-27000-16777216-6000000000-3.141592653589793-JSON THIS! \"-"+ooe.zomg_unicode+"-0-base64-{(1),(2),(3)}-{(1),(2),(3)}-{(1),(2),(3)}",
+        "1-0--42-27000-16777216-6000000000-3.141592653589793-JSON THIS! \"-"+ooe.zomg_unicode+"-0-base64-{(1),(2),(3)}-{(1),(2),(3)}-{(1),(2),(3)}",
         toTuple(type, ooe).toDelimitedString("-"));
 
-    assertEquals("(31337,I am a bonk... xor!)-(1,0,35,27000,16777216,6000000000,3.141592653589793,JSON THIS! \","+n.my_ooe.zomg_unicode+",0,base64,{(1),(2),(3)},{(1),(2),(3)},{(1),(2),(3)})",
+    assertEquals("(31337,I am a bonk... xor!)-(1,0,-42,27000,16777216,6000000000,3.141592653589793,JSON THIS! \","+n.my_ooe.zomg_unicode+",0,base64,{(1),(2),(3)},{(1),(2),(3)},{(1),(2),(3)})",
         toTuple(type, n).toDelimitedString("-"));
 
-    assertEquals("{(1,0,34,27000,16777216,6000000000,3.141592653589793,JSON THIS! \"," + ooe.zomg_unicode +
-        ",0,base64,{(1),(2),(3)},{(1),(2),(3)},{(1),(2),(3)}),(1,0,35,27000,16777216,6000000000,3.141592653589793,JSON THIS! \"," +
+    assertEquals("{(1,0,35,27000,16777216,6000000000,3.141592653589793,JSON THIS! \"," + ooe.zomg_unicode +
+        ",0,base64,{(1),(2),(3)},{(1),(2),(3)},{(1),(2),(3)}),(1,0,-42,27000,16777216,6000000000,3.141592653589793,JSON THIS! \"," +
         ooe.zomg_unicode + ",0,base64,{(1),(2),(3)},{(1),(2),(3)},{(1),(2),(3)})}-{({}),({(and a one),(and a two)}),({(then a one, two),(three!),(FOUR!!)})}-{zero={}, three={}, two={(1,Wait.),(2,What?)}}",
         (toTuple(type, hm).toDelimitedString("-")));
 
@@ -174,13 +174,13 @@ public class TestThriftToPig {
     mostly_ooe.setBase64((ByteBuffer)null);
     mostly_ooe.setZomg_unicode(null);
     assertEquals(
-        "1-0-35-27000-16777216-6000000000-3.141592653589793-JSON THIS! \"--0--{(1),(2),(3)}-{(1),(2),(3)}-{(1),(2),(3)}",
+        "1-0--42-27000-16777216-6000000000-3.141592653589793-JSON THIS! \"--0--{(1),(2),(3)}-{(1),(2),(3)}-{(1),(2),(3)}",
         toTuple(type, mostly_ooe).toDelimitedString("-"));
 
     Nesting n2 = new Nesting(n);
     n2.getMy_bonk().setMessage(null);
     n2.setMy_ooe(mostly_ooe);
-    assertEquals("(31337,)-(1,0,35,27000,16777216,6000000000,3.141592653589793,JSON THIS! \",,0,,{(1),(2),(3)},{(1),(2),(3)},{(1),(2),(3)})",
+    assertEquals("(31337,)-(1,0,-42,27000,16777216,6000000000,3.141592653589793,JSON THIS! \",,0,,{(1),(2),(3)},{(1),(2),(3)},{(1),(2),(3)})",
         toTuple(type, n2).toDelimitedString("-"));
 
     // test enum.
