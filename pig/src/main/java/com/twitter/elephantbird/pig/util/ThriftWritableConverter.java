@@ -110,4 +110,14 @@ public class ThriftWritableConverter<M extends TBase<?, ?>> extends
     writable.set(pigToThrift.getThriftObject(value));
     return writable;
   }
+
+  @Override
+  public Boolean bytesToBoolean(byte[] b) throws IOException {
+    throw new IOException("Don't know how to cast byte array to a Boolean.");
+  }
+
+  @Override
+  public byte[] toBytes(Boolean b) throws IOException {
+    throw new IOException("Don't know how to cast a Boolean to a byte array.");
+  }
 }

@@ -1,12 +1,14 @@
 package com.twitter.elephantbird.mapreduce.input;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.fail;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.mapreduce.InputSplit;
+import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.JobContext;
 import org.apache.hadoop.mapreduce.JobID;
 import org.junit.Before;
@@ -19,7 +21,11 @@ public class TestIntegerListInputFormat {
   @Before
   public void setup() {
     input_ = new IntegerListInputFormat();
-    jc_ = new JobContext(new Configuration(), new JobID());
+    try {
+      jc_ = new Job(new Configuration(), "test");
+    } catch (IOException e) {
+      fail("Could not create job: " + e);
+    }
   }
 
   @Test

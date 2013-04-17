@@ -15,12 +15,13 @@ import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapreduce.InputSplit;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.RecordReader;
-import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.TaskAttemptID;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
+import org.apache.hadoop.mapreduce.task.TaskAttemptContextImpl;
 import org.apache.pig.PigServer;
 import org.apache.pig.backend.executionengine.ExecException;
 import org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.PigSplit;
@@ -184,8 +185,8 @@ public class TestSequenceFileStorage {
     FileSplit fileSplit =
         new FileSplit(new Path(tempFilename), 0, new File(tempFilename).length(),
             new String[] { "localhost" });
-    TaskAttemptContext context =
-        new TaskAttemptContext(job.getConfiguration(), new TaskAttemptID());
+    TaskAttemptContextImpl context =
+      new TaskAttemptContextImpl(job.getConfiguration(), new TaskAttemptID());
     reader.initialize(fileSplit, context);
     InputSplit[] wrappedSplits = new InputSplit[] { fileSplit };
     int inputIndex = 0;

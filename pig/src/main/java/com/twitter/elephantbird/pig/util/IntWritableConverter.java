@@ -55,6 +55,16 @@ public class IntWritableConverter extends AbstractWritableConverter<IntWritable>
   }
 
   @Override
+  public Boolean bytesToBoolean(byte[] b) throws IOException {
+    throw new IOException("Don't know how to cast byte array to a Boolean.");
+  }
+
+  @Override
+  public byte[] toBytes(Boolean b) throws IOException {
+    throw new IOException("Don't know how to cast a Boolean to a byte array.");
+  }
+
+  @Override
   public void checkStoreSchema(ResourceFieldSchema schema) throws IOException {
     switch (schema.getType()) {
       case DataType.CHARARRAY:

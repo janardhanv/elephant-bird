@@ -55,4 +55,14 @@ public class BytesWritableConverter extends AbstractWritableConverter<BytesWrita
     // avoid array copy at the sake of new BytesWritable
     return new BytesWritable(value.get());
   }
+
+  @Override
+  public Boolean bytesToBoolean(byte[] b) throws IOException {
+    throw new IOException("Don't know how to cast byte array to a Boolean.");
+  }
+
+  @Override
+  public byte[] toBytes(Boolean b) throws IOException {
+    throw new IOException("Don't know how to cast a Boolean to a byte array.");
+  }
 }
