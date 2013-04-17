@@ -154,6 +154,10 @@ public abstract class AbstractTestWritableConverter<W extends Writable, C extend
     split.setConf(job.getConfiguration());
     loader.prepareToRead(reader, split);
 
+    while (!job.isComplete()) {
+      Thread.sleep(1000);
+    }
+
     // read tuples and validate
     validate(new LoadFuncTupleIterator(loader));
   }
