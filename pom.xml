@@ -9,7 +9,7 @@
 
   <groupId>com.twitter.elephantbird</groupId>
   <artifactId>elephant-bird</artifactId>
-  <version>3.0.9-SNAPSHOT</version>
+  <version>3.0.9-tm6</version>
   <packaging>pom</packaging>
 
   <name>Elephant Bird</name>
@@ -78,7 +78,7 @@
     <slf4j.version>1.6.4</slf4j.version>
     <apache.hadoop.version>2.1.0.tm6</apache.hadoop.version>
     <apache.pig.version>0.10.1.tm6</apache.pig.version>
-    <apache.hive.version>0.8.0</apache.hive.version>
+    <apache.hive.version>0.9.0.tm6</apache.hive.version>
     <apache.mahout.version>0.6</apache.mahout.version>
     <apache.lucene.version>4.0.0</apache.lucene.version>
   </properties>
@@ -255,6 +255,23 @@
         <groupId>org.apache.pig</groupId>
         <artifactId>pig</artifactId>
         <version>${apache.pig.version}</version>
+      </dependency>
+
+      <!-- hive -->
+      <dependency>
+        <groupId>org.apache.hive</groupId>
+        <artifactId>hive-serde</artifactId>
+        <version>${apache.hive.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.hive</groupId>
+        <artifactId>hive-exec</artifactId>
+        <version>${apache.hive.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.hcatalog</groupId>
+        <artifactId>hcatalog</artifactId>
+        <version>0.4.0-T1</version>
       </dependency>
 
       <dependency>
@@ -537,8 +554,12 @@
 
   <modules>
     <module>core</module>
+<!--    <module>hive</module> -->
     <module>mahout</module>
     <module>pig</module>
+<!--    <module>rcfile</module> -->
+<!--    <module>lucene</module>
+    <module>pig-lucene</module>-->
     <module>examples</module>
   </modules>
 
