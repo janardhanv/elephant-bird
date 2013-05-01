@@ -562,7 +562,7 @@
     <module>pig</module>
     <module>rcfile</module>
     <module>lucene</module>
-<!--    <module>pig-lucene</module>-->
+    <module>pig-lucene</module>
     <module>examples</module>
   </modules>
 
