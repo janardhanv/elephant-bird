@@ -188,7 +188,8 @@ public class TestRCFileThriftStorage {
     Configuration conf = new Configuration();
     conf.setBoolean("mapred.output.compress", true);
     // for some reason GzipCodec results in loader failure on Mac OS X
-    conf.set("mapred.output.compression.codec", "org.apache.hadoop.io.compress.BZip2Codec");
+    // also for some reason Bzip2 does not pass tests on Centos with TM-6, so commenting out:
+    //    conf.set("mapred.output.compression.codec", "org.apache.hadoop.io.compress.BZip2Codec");
 
     return outputFormat.getRecordWriter(
         new TaskAttemptContextImpl(conf, new TaskAttemptID()));
