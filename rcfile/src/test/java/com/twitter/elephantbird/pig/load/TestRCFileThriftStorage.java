@@ -17,6 +17,7 @@ import org.apache.hadoop.mapreduce.OutputFormat;
 import org.apache.hadoop.mapreduce.RecordWriter;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.TaskAttemptID;
+import org.apache.hadoop.mapreduce.task.TaskAttemptContextImpl;
 import org.apache.pig.PigServer;
 import org.apache.pig.data.DataByteArray;
 import org.apache.pig.data.Tuple;
@@ -190,7 +191,7 @@ public class TestRCFileThriftStorage {
     conf.set("mapred.output.compression.codec", "org.apache.hadoop.io.compress.BZip2Codec");
 
     return outputFormat.getRecordWriter(
-        new TaskAttemptContext(conf, new TaskAttemptID()));
+        new TaskAttemptContextImpl(conf, new TaskAttemptID()));
   }
 
   private String personToString(TestPersonExtended person) {
