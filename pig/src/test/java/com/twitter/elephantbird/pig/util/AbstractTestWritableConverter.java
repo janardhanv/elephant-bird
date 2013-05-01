@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import com.twitter.elephantbird.pig.util.UnitTestUtil;
 import org.apache.commons.cli.ParseException;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -104,7 +103,7 @@ public abstract class AbstractTestWritableConverter<W extends Writable, C extend
   @Before
   public void setup() throws IOException {
     // create local Pig server
-    pigServer = UnitTestUtil.makePigServer();
+    pigServer = PigTestUtil.makePigServer();
 
     // create temp SequenceFile
     final File tempFile = File.createTempFile("test", ".txt");

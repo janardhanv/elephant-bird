@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.twitter.elephantbird</groupId>
     <artifactId>elephant-bird</artifactId>
-    <version>3.0.9-tm6</version>
+    <version>3.0.10-tm6</version>
     <relativePath>..</relativePath>
   </parent>
 

@@ -9,7 +9,7 @@
 
   <groupId>com.twitter.elephantbird</groupId>
   <artifactId>elephant-bird</artifactId>
-  <version>3.0.9-tm6</version>
+  <version>3.0.10-tm6</version>
   <packaging>pom</packaging>
 
   <name>Elephant Bird</name>
@@ -400,6 +400,9 @@
             <systemPropertyVariables>
               <test.build.data>${basedir}/target/surefire/data</test.build.data>
             </systemPropertyVariables>
+            <environmentVariables> <!-- for OSX 10.7+ -->
+                <DYLD_LIBRARY_PATH>${test.library.path}</DYLD_LIBRARY_PATH>
+            </environmentVariables>
             <argLine>-Djava.library.path=${test.library.path}</argLine>
           </configuration>
         </plugin>
